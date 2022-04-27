@@ -1,0 +1,52 @@
+
+<%- include('partials/_header') -%>
+
+
+<body>
+      <div class="containers">
+            <!-- navigation -->
+            <%- include('partials/_navigation') -%>
+
+            <div class="container mt-5" style="height: 500px;">
+
+                  <div class="row justify-content-center">
+
+                        <div class="col-4">
+                              <div class="card mt-5" style="background: #ffffff98;">
+                                    <div class="card-header">
+                                          Kayıtol
+                                    </div>
+                                    <div class="card-body">
+                                          <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label"> Name </label>
+                                                <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                                          </div>
+                                          <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label"> Username </label>
+                                                <input type="username" class="form-control" id="exampleFormControlInput1" placeholder="username">
+                                          </div>
+                                          <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label"> Password </label>
+                                                <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
+                                          </div>
+                                          <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label"> Email </label>
+                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="password">
+                                          </div>
+                                          <button type="submit" class="btn btn-success">Kayıt ol</button>
+                                          <a  href="/login" class="btn  btn-outline-primary">Giriş Yap</a>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+
+
+            </div>
+            <!--- Content-->
+            <!---footer -->
+            <%- include('partials/_footer') -%>
+      </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+
+html {
+  scroll-behavior: smooth;
+}
+.containers {
+      margin: 0px;
+      width: 100%;
+      background-color: rgb(59, 59, 59);
+      background-image: url(../img/bg.jpg);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+}
+
+.mt-10 {
+      margin-top: 7%;
+}
+.banner-btn{
+      padding: 1.5rem;
+      margin-right: 0;
+      margin-left: 0;
+      border-width: 1px;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+      position: relative;
+      padding: 1rem;
+      margin: 1rem -0.75rem 0;
+      border: solid #dee2e6;
+      border-width: 1px 0 0;
+}
+
+/* Scroll bar  */
+/* width */
+::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+
+.logo-bigger{
+  font-size: 120pt;
+}

@@ -1,0 +1,154 @@
+
+<%- include('partials/_header') -%>
+
+
+<body>
+      <div class="containers">
+            <!-- navigation -->
+            <%- include('partials/_navigation') -%>
+
+            <div class="container mt-5">
+
+                  <div class="row justify-content-center">
+                        <div class="col-3">
+                              <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light rounded">
+                                          A list item
+                                          <span class="badge bg-danger rounded-pill">14</span>
+                                    </li>
+                                          <ul class="list-group my-0 ms-3 ">
+                                                <li class="list-group-item rounded">An item</li>
+                                                <li class="list-group-item rounded">A second item</li>
+                                                <li class="list-group-item bg-dark text-light rounded">A third item</li>
+                                                <li class="list-group-item rounded">A fourth item</li>
+                                                <li class="list-group-item rounded">And a fifth one</li>
+                                          </ul>
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center rounded">
+                                          A second list item
+                                          <span class="badge bg-danger rounded-pill">2</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center rounded">
+                                          A third list item
+                                          <span class="badge bg-danger rounded-pill">1</span>
+                                    </li>
+                              </ul>
+                        </div>
+                        <div class="col-9">
+                              <div class="card" style="background: #ffffff98;">
+                                    <div class="card-body">
+                                          <h5 class="card-title">HTML Introduction</h5>
+                                          <h6 class="card-subtitle mb-2 text-muted">HTML is the standard markup language
+                                                for creating Web pages.</h6>
+                                          <p class="card-text">
+                                                <br>
+                                                HTML is the standard markup language for creating Web pages.
+
+                                                What is HTML?
+                                                HTML stands for Hyper Text Markup Language
+                                                HTML is the standard markup language for creating Web pages
+                                                HTML describes the structure of a Web page
+                                                HTML consists of a series of elements
+                                                HTML elements tell the browser how to display the content
+                                                HTML elements label pieces of content such as "this is a heading", "this
+                                                is a paragraph", "this is a link", etc.
+                                                A Simple HTML Document
+                                                Example
+                                                Example Explained
+                                                The declaration defines that this document is an HTML5 document
+                                                The element is the root element of an HTML page
+                                                The element contains meta information about the HTML page
+                                                The element specifies a title for the HTML page (which is shown in the
+                                                browser's title bar or in the page's tab)
+                                                The element defines the document's body, and is a container for all the
+                                                visible contents, such as headings, paragraphs, images, hyperlinks,
+                                                tables, lists, etc.
+                                                The element defines a large heading
+                                                The element defines a paragraph
+                                                What is an HTML Element?
+                                                An HTML element is defined by a start tag, some content, and an end tag:
+
+                                                Content goes here...
+                                                The HTML element is everything from the start tag to the end tag:
+
+                                          <h1>My First Heading</h1>
+                                          <p>My first paragraph.</p>
+                                          Start tag Element content End tag
+                                          <h1> My First Heading </h1>
+                                          <p> My first paragraph. </p>
+                                          <br> none none
+                                          Note: Some HTML elements have no content (like the <br> element). These
+                                          elements are called empty elements. Empty elements do not have an end tag!
+
+                                          Web Browsers
+                                          The purpose of a web browser (Chrome, Edge, Firefox, Safari) is to read HTML
+                                          documents and display them correctly.
+
+                                          A browser does not display the HTML tags, but uses them to determine how to
+                                          display the document:
+
+                                          View in Browser
+
+                                          HTML Page Structure
+                                          Below is a visualization of an HTML page structure:
+
+
+                                          Note: The content inside the section (the white area above) will be displayed
+                                          in a browser. The content inside the
+                                          element will be shown in the browser's title bar or in the page's tab.
+
+                                          HTML History
+                                          Since the early days of the World Wide Web, there have been many versions of
+                                          HTML:
+
+                                          Year Version
+                                          1989 Tim Berners-Lee invented www
+                                          1991 Tim Berners-Lee invented HTML
+                                          1993 Dave Raggett drafted HTML+
+                                          1995 HTML Working Group defined HTML 2.0
+                                          1997 W3C Recommendation: HTML 3.2
+                                          1999 W3C Recommendation: HTML 4.01
+                                          2000 W3C Recommendation: XHTML 1.0
+                                          2008 WHATWG HTML5 First Public Draft
+                                          2012 WHATWG HTML5 Living Standard
+                                          2014 W3C Recommendation: HTML5
+                                          2016 W3C Candidate Recommendation: HTML 5.1
+                                          2017 W3C Recommendation: HTML5.1 2nd Edition
+                                          2017 W3C Recommendation: HTML5.2
+                                          This tutorial follows the latest HTML5 standard.
+                                          </p>
+                                          <a href="#" class="card-link">Card link</a>
+                                          <a href="#" class="card-link">Another link</a>
+                                    </div>
+                              </div>
+
+
+                        </div>
+                  </div>
+
+
+
+            </div>
+            <!--- Content-->
+            <!---footer -->
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-5 border-top"
+                  style="background: linear-gradient(0,#ffffff,#e3f2fd49)">
+                  <p class="col-md-4 mb-0 text-dark">© 2021 Company, Inc</p>
+
+                  <a href="/"
+                        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                        <h4><i class="fa-solid fa-compass"></i> My Web Compass</h4>
+                  </a>
+
+                  <ul class="nav col-md-4 justify-content-end">
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-dark fw-normal">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-dark fw-normal">Features</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-dark fw-normal">Pricing</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-dark fw-normal">FAQs</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-dark fw-normal">About</a></li>
+                  </ul>
+            </footer>
+      </div>
+</body>
+
+</html>
