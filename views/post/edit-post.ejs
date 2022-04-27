@@ -1,0 +1,64 @@
+<%- include('../partials/_header') -%>
+
+
+      <body>
+            <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
+            <div class="containers">
+                  <!-- navigation -->
+                  <%- include('../partials/_navigation') -%>
+
+                        <div class="container mt-5">
+
+                              <div class="row justify-content-center">
+
+                                    <div class="col-9">
+                                          <div class="card" style="background: #ffffff98;">
+                                                <div class="card-body">
+                                                      <form method="POST" action="/update-post/<%= post._id %>">
+                                                      <div class="mb-3">
+                                                            <label for="exampleFormControlInput1"
+                                                                  class="form-label">Ders başlığı</label>
+                                                            <input type="text" class="form-control" name="postTitle"
+                                                                  id="exampleFormControlInput1"
+                                                                  value="<%= post.postTitle %>" >
+                                                      </div>
+                                                      <div class="mb-3">
+                                                            <label for="exampleFormControlTextarea1"
+                                                                  class="form-label">Konu içeriği</label>
+                                                            <textarea class="form-control"
+                                                                  id="exampleFormControlTextarea1" name="postDescription"
+                                                                  rows="10"><%= post.postDescription %></textarea>
+                                                      </div>
+                                                      <select class="form-select" name="categoryIn" aria-label="Default select example">
+                                                            
+                                                            <% for(var i = 0; i < category.length; i++) { %>
+                                                                  <% if(post.categoryIn == category[i]._id) { %>
+                                                                        <option value="<%= category[i]._id %>" selected><%- category[i].categoryName %></option>
+                                                                  <% } else { %>
+                                                                        <option value="<%= category[i]._id %>"><%- category[i].categoryName %></option>
+                                                                  <% } %>
+                                                            <% } %>
+                                                      </select><br>
+                                                      
+                                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                                      </form>
+                                                </div>
+                                          </div>
+
+
+                                          <script>
+                                                CKEDITOR.replace('postDescription');
+                                          </script>
+                                    </div>
+                              </div>
+
+
+
+                        </div>
+                        <!--- Content-->
+                        <!---footer -->
+                        <%- include('../partials/_footer') -%>
+            </div>
+      </body>
+
+      </html>

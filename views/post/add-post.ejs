@@ -1,11 +1,11 @@
-<%- include('partials/_header') -%>
+<%- include('../partials/_header') -%>
 
 
       <body>
             <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
             <div class="containers">
                   <!-- navigation -->
-                  <%- include('partials/_navigation') -%>
+                  <%- include('../partials/_navigation') -%>
 
                         <div class="container mt-5">
 
@@ -14,11 +14,11 @@
                                     <div class="col-9">
                                           <div class="card" style="background: #ffffff98;">
                                                 <div class="card-body">
-
+                                                      <form method="POST" action="/add-post">
                                                       <div class="mb-3">
                                                             <label for="exampleFormControlInput1"
                                                                   class="form-label">Ders başlığı</label>
-                                                            <input type="email" class="form-control"
+                                                            <input type="text" class="form-control" name="postTitle"
                                                                   id="exampleFormControlInput1"
                                                                   placeholder="html lesson">
                                                       </div>
@@ -26,23 +26,25 @@
                                                             <label for="exampleFormControlTextarea1"
                                                                   class="form-label">Konu içeriği</label>
                                                             <textarea class="form-control"
-                                                                  id="exampleFormControlTextarea1" name="editor1"
+                                                                  id="exampleFormControlTextarea1" name="postDescription"
                                                                   rows="10"></textarea>
                                                       </div>
-                                                      <select class="form-select" aria-label="Default select example">
+                                                      <select class="form-select" name="categoryIn" aria-label="Default select example">
                                                             <option selected>Kategori seçiniz</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                            <% for(var i = 0; i < category.length; i++) { %>
+                                                                  <option value="<%= category[i]._id %>"><%- category[i].categoryName %></option>
+                                                                  
+                                                            <% } %>
                                                       </select><br>
+                                                      
                                                       <button type="submit" class="btn btn-primary">Submit</button>
-
+                                                      </form>
                                                 </div>
                                           </div>
 
 
                                           <script>
-                                                CKEDITOR.replace('editor1');
+                                                CKEDITOR.replace('postDescription');
                                           </script>
                                     </div>
                               </div>
@@ -52,7 +54,7 @@
                         </div>
                         <!--- Content-->
                         <!---footer -->
-                        <%- include('partials/_footer') -%>
+                        <%- include('../partials/_footer') -%>
             </div>
       </body>
 

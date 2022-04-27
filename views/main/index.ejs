@@ -1,11 +1,11 @@
 
-<%- include('partials/_header') -%>
+<%- include('../partials/_header') -%>
 
 
 <body>
       <div class="containers">
             <!-- navigation -->
-            <%- include('partials/_navigation') -%>
+            <%- include('../partials/_navigation') -%>
 
             <div class="mt-10">
 
@@ -26,13 +26,10 @@
                               <a href="#" type="button" class="btn btn-light m-1 position-relative"><h1><i class="fa-brands fa-html5"></i></h1>Html<br>Dersleri
                                     <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger">
                                           15</span> </a>
-                              <a href="#" type="button" class="btn btn-light m-1"><h1><i class="fa-brands fa-css3-alt"></i></h1>Css<br>Dersleri</a>
-                              <a href="#" type="button" class="btn btn-light m-1"><h1><i class="fa-brands fa-js-square"></i></i></h1>Javascript<br>Dersleri</a>
-                              <a href="#" type="button" class="btn btn-light m-1"><h1><i class="fa-brands fa-node-js"></i></h1>Node js<br>Dersleri</a>
-                              <a href="#" type="button" class="btn btn-light m-1"><h1><i class="fa-brands fa-php"></i></h1>Php<br>Dersleri</a>
-                              <a href="#" type="button" class="btn btn-light m-1"><h1><i class="fa-brands fa-python"></i></h1>Python<br>Dersleri</a>
-                              <a href="#" type="button" class="btn btn-light m-1"><h1><i class="fa-brands fa-git-alt"></i></h1>Git ve Github<br>Dersleri</a>
-                              <a href="#" type="button" class="btn btn-light m-1"><h1><i class="fa-solid fa-database"></i></h1>SQL<br>Dersleri</a>
+                              
+                              <% for(var i = 0; i < category.length; i++) { %>
+                                    <a href="/main-detail/<%= category[i]._id %>" type="button" class="btn btn-light m-1"><%- category[i].icon %><%- category[i].categoryName %></a>
+                              <% } %>
                               </div>
                               
                         </div>
@@ -43,7 +40,7 @@
                   
             </div>
             <!--- Content-->
-            <%- include('partials/_footer') -%>
+            <%- include('../partials/_footer') -%>
       </div>
 </body>
 
