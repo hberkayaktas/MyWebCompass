@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const ejs = require("ejs");
 const Category = require('./models/category')
 const Post = require('./models/post')
+const User = require('./models/user')
+
 
 // Uygulama oluştururuz
 const app = express();
@@ -37,6 +39,16 @@ app.get("/project", async (req, res) => {
 app.get("/register", async (req, res) => {
       res.render("user/register");
 });
+app.post("/register", async (req, res) => {
+      const user = await User.create({
+            name: req.body.name,
+            userName: req.body.username,
+            password: req.body.password,
+            email:  req.body.email,
+      });
+      res.redirect("/register");      
+});
+
 app.get("/login", async (req, res) => {
       res.render("user/login");
 });
