@@ -43,8 +43,9 @@ app.get("/login", async (req, res) => {
 
 app.get("/main-detail/:id", async (req, res) => {
       const post = await Post.find({categoryIn:req.params.id});
-      console.log(post)
-      res.render("main/main-detail",{post,});
+      const postCount = await Post.find({categoryIn:req.params.id}).countDocuments();
+      const category = await Category.findById(req.params.id);
+      res.render("main/main-detail",{post,postCount,category});
 });
 
 
@@ -71,6 +72,7 @@ app.post("/update-category/:id", async (req,res)=>{
       const category = await Category.findOne({_id:req.params.id})
       category.categoryName = req.body.categoryName;
       category.icon = req.body.icon;
+      category.iconB =req.body.iconB;
       category.save();
       res.redirect("/all-category");
 })
@@ -116,6 +118,15 @@ app.post("/update-post/:id", async (req,res)=>{
 app.get("/delete-post/:id",async (req,res)=>{
       await Post.findByIdAndRemove(req.params.id);
       res.redirect('/all-post');
+})
+
+app.get("/post-detail/:id",async (req,res)=>{
+      singlePost = await Post.findById(req.params.id);
+      category = singlePost.categoryIn;
+      allPost = await Post.find({categoryIn:category});
+      
+      const postCount = await Post.find({categoryIn:category}).countDocuments();
+      res.render("post/post-details",{singlePost,allPost, postCount, });
 })
 
 

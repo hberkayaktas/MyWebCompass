@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const categoryShema = new Schema({
       categoryName: String,
       icon: String,
+      iconB: String,
       dateCreated: {
             type: Date,
             default: Date.now,

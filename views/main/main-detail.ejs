@@ -11,64 +11,24 @@
 
                   <div class="row justify-content-center">
                        <div class="col-3">
-                        <a href="#"  class="btn btn-light m-1 fs-1" style="width: 100%;"><p ><i class="fa-brands fa-html5 logo-bigger"></i></p>Html<br>Dersleri</a>
+                        <a href="#"  class="btn btn-light m-1 fs-1" style="width: 100%;"><p ><%- category.iconB %></i></p><%- category.categoryName %></a>
                         <br>
                         <div class="card m-1" style="width: 100%;">
                               <div class="card-body text-center" >
-                                    <p class="card-text">Aktif ders sayısı: <span class="badge bg-danger fs-5">15</span></p>
+                                    <p class="card-text">Aktif ders sayısı: <span class="badge bg-danger fs-5"><%= postCount %></span></p>
                               </div>
                         </div>
                        </div>
                         <div class="col-9">
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                              <% for(var i = 0; i < post.length; i++) { %>
+                                    <div class="card mb-2">
+                                          <div class="card-body py-2 pt-2 pb-1">
+                                                <h5 class="card-title"><a href="/post-detail/<%= post[i]._id %>" class="link-dark"><%- post[i].postTitle %></a></h5>
+                                                <p class="card-text d-inline fs-5"><%= post[i].postDescription.slice(0,150) %>     
+                                                </p><a href="/post-detail/<%= post[i]._id %>" class="badge bg-dark">...Devamını oku</a>
+                                          </div>
                                     </div>
-                              </div>
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                              </div>
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                              </div>
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                              </div>
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                              </div>
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                              </div>
-
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                              </div>
-                              <div class="card mb-2">
-                                    <div class="card-body p-1">
-                                          <h5 class="card-title">Html nedir</h5>
-                                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    </div>
-                              </div>
+                              <% } %>
 
 
                         </div>

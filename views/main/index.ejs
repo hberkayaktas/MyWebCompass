@@ -23,12 +23,12 @@
                   <div class="row col-12 justify-content-center">
                         <div class="col-5 d-flex mt-5">
                               <div class="col">
-                              <a href="#" type="button" class="btn btn-light m-1 position-relative"><h1><i class="fa-brands fa-html5"></i></h1>Html<br>Dersleri
+                                    <!--<a href="#" type="button" class="btn btn-light m-1 position-relative"><h1><i class="fa-brands fa-html5"></i></h1>Html<br>Dersleri
                                     <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger">
-                                          15</span> </a>
+                                          15</span> </a>-->
                               
                               <% for(var i = 0; i < category.length; i++) { %>
-                                    <a href="/main-detail/<%= category[i]._id %>" type="button" class="btn btn-light m-1"><%- category[i].icon %><%- category[i].categoryName %></a>
+                                    <a href="/main-detail/<%= category[i]._id %>" type="button" class="btn btn-light m-1"><h1><%- category[i].icon %></h1><%- category[i].categoryName %></a>
                               <% } %>
                               </div>
                               
