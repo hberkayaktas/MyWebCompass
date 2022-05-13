@@ -1,153 +1,67 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require("express-session");
+const MongoStore=require('connect-mongo');
 const ejs = require("ejs");
-const Category = require('./models/category')
-const Post = require('./models/post')
-const User = require('./models/user')
-
+const Category = require("./models/category");
+const Post = require("./models/post");
+const User = require("./models/user");
+const pageRoute = require("./routes/pageRoute");
+const adminRoutes = require("./routes/adminRoute");
 
 // Uygulama oluştururuz
 const app = express();
 
 //database bağlantısı
-mongoose.connect('mongodb://localhost/mywebcompass-db',
-{
-  useNewUrlParser:true,
-  useUnifiedTopology:true
+connectStringB = "mongodb://localhost/mywebcompass-db";
+mongoose.connect(connectStringB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 //Wiew engine
 app.set("view engine", "ejs");
 
+//Global Variable
+global.userIN = null;
 
 //Middlewares
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
-app.get("/", async (req, res) => {
-      const category = await Category.find({});
-      res.render("main/index",{category, });
-});
-app.get("/about", async (req, res) => {
-      res.render("main/about");
-});
-app.get("/project", async (req, res) => {
-      res.render("main/project");
-});
-app.get("/register", async (req, res) => {
-      res.render("user/register");
-});
-app.post("/register", async (req, res) => {
-      const user = await User.create({
-            name: req.body.name,
-            userName: req.body.username,
-            password: req.body.password,
-            email:  req.body.email,
-      });
-      res.redirect("/register");      
-});
-
-app.get("/login", async (req, res) => {
-      res.render("user/login");
-});
-
-app.get("/main-detail/:id", async (req, res) => {
-      const post = await Post.find({categoryIn:req.params.id});
-      const postCount = await Post.find({categoryIn:req.params.id}).countDocuments();
-      const category = await Category.findById(req.params.id);
-      res.render("main/main-detail",{post,postCount,category});
+app.use(
+  session({
+    secret: "smartEdu_session_string",
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: connectStringB }),
+  })
+);
+app.use("*", (req, res, next) => {
+  userIN = req.session.userID;
+  next();
 });
 
 
 
-app.get("/add-category", async (req, res) => {
-      res.render("category/add-category");
-});
-app.post("/add-category", async (req, res) => {
-      await Category.create(req.body);
-      res.redirect("/");
-});
-app.get("/all-category", async (req,res)=>{
-      const category = await Category.find({});
-      const categoryCount = await Category.find().countDocuments();
-      res.render("category/all-category",{category, categoryCount});
-})
 
-app.get("/update-category/:id", async (req,res)=>{
-      const category = await Category.findById(req.params.id)
-      res.render("category/edit-category",{category,});
-})
+//routes
+app.use("/", pageRoute);
+app.use("/admin", adminRoutes);
 
-app.post("/update-category/:id", async (req,res)=>{
-      const category = await Category.findOne({_id:req.params.id})
-      category.categoryName = req.body.categoryName;
-      category.icon = req.body.icon;
-      category.iconB =req.body.iconB;
-      category.save();
-      res.redirect("/all-category");
-})
-app.get("/delete-category/:id",async (req,res)=>{
-      await Category.findByIdAndRemove(req.params.id);
-      res.redirect('/all-category');
-})
-
-
-
-app.get("/add-post", async (req, res) => {
-      const category = await Category.find({});
-      res.render("post/add-post",{category, });
-});
-app.post("/add-post", async (req, res) => {
-      const categoryId = req.body.categoryIn;
-      const category = await Category.findById(categoryId);
-      const post = await Post.create({
-            postTitle: req.body.postTitle,
-            postDescription: req.body.postDescription,
-            categoryIn:categoryId,
-            categoryInTitle: category.categoryName,
-      });
-      res.redirect("/all-post");
-});
-
-app.get("/update-post/:id", async (req,res)=>{
-      const post = await Post.findById(req.params.id);
-      const category = await Category.find({});
-      res.render("post/edit-post",{post,category});
-})
-
-app.post("/update-post/:id", async (req,res)=>{
-      const post = await Post.findOne({_id:req.params.id})
-      const category = await Category.findById(req.body.categoryIn);
-      post.postTitle = req.body.postTitle;
-      post.postDescription = req.body.postDescription;
-      post.categoryIn = req.body.categoryIn;
-      post.categoryInTitle = category.categoryName;
-      post.save();
-      res.redirect("/all-post");
-})
-app.get("/delete-post/:id",async (req,res)=>{
-      await Post.findByIdAndRemove(req.params.id);
-      res.redirect('/all-post');
-})
-
-app.get("/post-detail/:id",async (req,res)=>{
-      singlePost = await Post.findById(req.params.id);
-      category = singlePost.categoryIn;
-      allPost = await Post.find({categoryIn:category});
-      
-      const postCount = await Post.find({categoryIn:category}).countDocuments();
-      res.render("post/post-details",{singlePost,allPost, postCount, });
-})
-
-
-app.get("/all-post", async (req,res)=>{
-      const post = await Post.find({});
-      const postCount = await Post.find().countDocuments();
-      res.render("post/all-post",{post, postCount});
-})
-
+/*
+app.get("/all-category",)
+app.get("/update-category/:id", )
+app.post("/update-category/:id", )
+app.get("/delete-category/:id",)
+app.get("/add-post", );
+app.post("/add-post", );
+app.get("/update-post/:id", )
+app.post("/update-post/:id", )
+app.get("/delete-post/:id",)
+app.get("/post-detail/:id",)
+app.get("/all-post", )
+*/
 
 const port = 3000;
 app.listen(port, () => {

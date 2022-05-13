@@ -17,18 +17,21 @@
                                           Giriş
                                     </div>
                                     <div class="card-body">
+                                          <form action="/admin/login" method="POST">
 
                                           <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label"> Admin Name </label>
-                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="username">
+                                                <label for="exampleFormControlInput1" class="form-label"> Admin email </label>
+                                                <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="username">
                                           </div>
                                           <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label"> Admin Password </label>
-                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="password">
+                                                <input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
                                           </div>
 
                                           <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                                          
                                           <a href="/register" class="btn  btn-outline-success">Kayıt ol</a>
+                                    </form>
                                     </div>
                               </div>
                         </div>
