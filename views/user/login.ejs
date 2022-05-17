@@ -13,10 +13,23 @@
 
                         <div class="col-4">
                               <div class="card mt-5" style="background: #ffffff98;">
+
                                     <div class="card-header">
                                           Giriş
                                     </div>
                                     <div class="card-body">
+                                          <% if (flashMessages){%>
+                                                <% if (flashMessages.success){%>
+                                                 <div class="alert alert-success">
+                                                        <%= flashMessages.success %>
+                                                 </div>
+                                                 <% }else if (flashMessages.error){ %>
+                                                 <div class="alert alert-danger">
+                                                        <%= flashMessages.error %>
+                                                 </div>
+                                                 <% } %>
+                                                              
+                                           <%}%>
                                           <form action="/admin/login" method="POST">
 
                                           <div class="mb-3">

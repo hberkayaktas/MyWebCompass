@@ -1,0 +1,60 @@
+<%- include('../partials/_header') -%>
+
+
+      <body>
+            <div class="containers">
+                  <!-- navigation -->
+                  <%- include('../partials/_navigation') -%>
+
+                        <div class="mt-10">
+
+                              <main class="px-3 text-center">
+                                    <h1><i class="fa-solid fa-compass"></i> My Web Compass</h1>
+                                    <p class="lead">Yazılım Dünyasındaki Pusulanız</p>
+                                    <p class="lead">
+                                          <%= user.role %>
+                                    </p>
+                                    <div class="card col-6 m-auto">
+                                          <div class="card-body text-center">
+                                                <%= user.userName %> | <%= user.name %> | <%= user.email %>
+                                          </div>
+                                    </div>
+                              </main>
+                              <div class="row col-12 justify-content-center">
+                                    <div class="col-5 d-flex mt-2">
+                                          <div class="col">
+                                                <!--<a href="#" type="button" class="btn btn-success m-1 position-relative"><h1><i class="fa-brands fa-html5"></i></h1>Html<br>Dersleri
+                                    <span class="position-absolute top-0 start-10 translate-middle badge rounded-pill bg-danger">
+                                          15</span> </a>-->
+
+
+
+                                                <a href="/admin/add-category" class="btn btn-success text-break m-1">Add
+                                                      Category</a>
+                                                <a href="/admin/all-category" class="btn btn-success text-break m-1">All
+                                                      Category</a>
+                                                <a href="/admin/add-post" class="btn btn-success text-break m-1">Add
+                                                      Post</a>
+
+                                                <a href="/admin/all-post" class="btn btn-success text-break m-1">All
+                                                      Post</a>
+                                                <a href="/admin/all-user" class="btn btn-success text-break m-1">All
+                                                      User</a>
+                                                <a href="/admin/add-user"
+                                                      class="btn btn-success text-break m-1">Kullanıcı Ekle</a>
+
+                                          </div>
+
+                                    </div>
+                              </div>
+
+
+                              <!---footer -->
+
+                        </div>
+                        <!--- Content-->
+                        <%- include('../partials/_footer') -%>
+            </div>
+      </body>
+
+      </html>

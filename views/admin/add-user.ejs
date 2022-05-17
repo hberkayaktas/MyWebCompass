@@ -1,0 +1,73 @@
+
+<%- include('../partials/_header') -%>
+
+
+<body>
+      <div class="containers">
+            <!-- navigation -->
+            <%- include('../partials/_navigation') -%>
+
+            <div class="container mt-5" style="height: 500px;">
+
+                  <div class="row justify-content-center">
+
+                        <div class="col-4">
+                              <div class="card mt-5" style="background: #ffffff98;">
+                                    <div class="card-header">
+                                          Kayıtol
+                                    </div>
+                                    <div class="card-body">
+                                          <% var messsage = messsage || null;
+                                             if(messsage == "success"){ %>
+                                                <div class="alert alert-success" role="alert">
+                                                      kaydınız oluşturuldu
+                                                </div>
+                                          <% }else if(messsage =="fail"){   %>
+                                                <div class="alert alert-success" role="alert">
+                                                      kaydınız oluşturulamadı
+                                                </div>
+                                          <% }else{   %>
+                                                
+                                          <% } %>
+                                          <form method="POST" action="/admin/add-user/">
+                                                <div class="mb-3">
+                                                      <label for="exampleFormControlInput1" class="form-label"> Name </label>
+                                                      <input type="text" name="name" class="form-control" id="exampleFormControlInput1"  placeholder="name">
+                                                </div>
+                                                <div class="mb-3">
+                                                      <label for="exampleFormControlInput1" class="form-label"> Username </label>
+                                                      <input type="text" name="username" class="form-control" id="exampleFormControlInput1"  placeholder="username">
+                                                </div>
+                                                <div class="mb-3">
+                                                      <label for="exampleFormControlInput1" class="form-label"> Password </label>
+                                                      <input type="password" name="password" class="form-control" id="exampleFormControlInput1"  placeholder="password">
+                                                </div>
+                                                <div class="mb-3">
+                                                      <label for="exampleFormControlInput1" class="form-label"> Email </label>
+                                                      <input type="email" name="email" class="form-control" id="exampleFormControlInput1"  placeholder="email">
+                                                </div>
+
+                                                <select class="form-select" name="role" aria-label="Default select example">                            
+                                                            
+                                                                  <option value="Admin">Admin</option>
+                                                                  <option value="User">User</option>
+                                                          
+                                                </select><br>
+                                                <button type="submit" class="btn btn-warning">Kayıt Et</button>
+                                                
+                                          </form>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+
+
+
+            </div>
+            <!--- Content-->
+            <!---footer -->
+            <%- include('../partials/_footer') -%>
+      </div>
+</body>
+
+</html>

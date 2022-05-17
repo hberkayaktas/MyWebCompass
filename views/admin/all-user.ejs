@@ -7,54 +7,47 @@
             <!-- navigation -->
             <%- include('../partials/_navigation') -%>
 
-            <div class="container mt-5" style="height: 500px;">
+            <div class="container mt-5">
 
                   <div class="row justify-content-center">
 
                         <div class="col-9">
                               <div class="card" style="background: #ffffff98;">
                                     <div class="card-body">
-                                          <% if (flashMessages){%>
-                                                <% if (flashMessages.success){%>
-                                                 <div class="alert alert-success">
-                                                        <%= flashMessages.success %>
-                                                 </div>
-                                                 <% }else if (flashMessages.error){ %>
-                                                 <div class="alert alert-danger">
-                                                        <%= flashMessages.error %>
-                                                 </div>
-                                                 <% } %>
-                                                              
-                                           <%}%>
                                           <table class="table">
                                                 <thead>
                                                   <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Categori Adı</th>
-                                                    <th scope="col">Categori İconu</th>
+                                                    <th scope="col">Adı</th>
+                                                    <th scope="col">Kullanıcı Adı</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Role</th>
                                                     <th scope="col">Ayarla/Sil</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                      <% for(var i = 0; i < category.length; i++) { %>
+                                                      <% for(var i = 0; i < users.length; i++) { %>
                                                             
                                                             <tr>
                                                                   <th scope="row"><%= i %></th>
-                                                                  <td><%- category[i].categoryName %></td>
-                                                                  <td><h1><%- category[i].icon %></h1></td>
+                                                                  <td><h6><%- users[i].name %></h6></td>
+                                                                  <td><%- users[i].userName %></td>
+                                                                  <td><%- users[i].email %></td>
+                                                                  <td><%- users[i].role %></td>
                                                                   <td>
-                                                                        <a href="/admin/update-category/<%= category[i]._id %>" class="btn btn-warning">Güncelle</a>
-                                                                        <a href="/admin/delete-category/<%= category[i]._id %>" class="btn btn-danger">Sil</a>
+                                                                        <a href="/admin/update-user/<%= users[i]._id %>" class="btn btn-warning">Güncelle</a>
+                                                                        <a href="/admin/delete-user/<%= users[i]._id %>" class="btn btn-danger">Sil</a>
                                                                   </td>
-                                                                </tr>
+                                                            </tr>
                                                       <% } %>
                                                  
                                                 </tbody>
                                                 <tfoot>
                                                       <tr>
-                                                            <th></th>
-                                                            <th>Toplam Kategori sayısı :<%= categoryCount %></th>
+                                                            <th colspan="5">Toplam user sayısı :<%= userCount %></th>
+                                                            <th><a href="/admin/add-user" class="btn btn-success">Kullanıcı Ekle</a></th>
                                                       </tr>
+                                                      
                                                 </tfoot>
                                               </table>
                                     </div>

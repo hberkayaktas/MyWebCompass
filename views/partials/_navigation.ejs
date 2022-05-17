@@ -6,22 +6,22 @@
                         My Web Compass
                   </a>
             </div>
+            <% if(title != "My Web Compass"){ %>
             <div class="col-7">
-                  <form class="col-9 m-0 d-flex  m-0" method="post" action="#">
-                        <input class="form-control me-2 col-sm-10" type="search" placeholder="Search" aria-label="Search">
+                  <form class="col-9 m-0 d-flex  m-0" method="GET" action="/search">
+                        <input class="form-control me-2 col-sm-10" name="search" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                   </form>
             </div>
+            <% } %>
 
             <div class="col-2 d-flex justify-content-end">
                   <a href="/" class="btn btn-outline-dark mx-1">Home</a>
                   <a href="/about" class="btn btn-outline-dark mx-1">About</a>
                   <a href="/project" class="btn btn-outline-dark mx-1">Project</a>
-                  <% if(!userIN){%>
-                  <a href="/admin/login" class="btn btn-outline-dark mx-1">Login</a>
-                  <a href="/register" class="btn btn-outline-dark mx-1">Register</a>
-                  <%}else{ %>
-                  <a href="/admin/logout" class="btn btn-warning mx-1">Logout</a>
+                  <% var userRoles = userRole || null;
+                                             if(userRoles == "Admin"){ %>
+                  <a href="/admin/dashboard" class="btn btn-outline-dark mx-1">Dashboard</a>
                   <% } %>
             </div>
       </div>

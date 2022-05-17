@@ -1,19 +1,30 @@
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-1 mt-10 border-top  bottom-0"
-style="background: linear-gradient(0,#ffffff,#e3f2fd49); height: 100px; margin-top: 175px;">
-<p class="col-md-4 mb-0  text-dark">© 2021 Company, Inc</p>
 
-<a href="/"
-      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <h4><i class="fa-solid fa-compass"></i> My Web Compass</h4>
-</a>
+<footer class="footer d-flex fixed-bottom shadow"
+      >
+      <p class="col-md-4 mb-0  text-dark">© 2021 Company, Inc</p>
 
-<ul class="nav col-md-4 justify-content-end">
-      <% if(userIN){%>
-      <li class="nav-item"><a href="/admin/add-category" class="nav-link px-2 text-dark fw-normal">Add Category</a></li>
-      <li class="nav-item"><a href="/admin/add-post" class="nav-link px-2 text-dark fw-normal">Add Post</a></li>
-      <li class="nav-item"><a href="/admin/all-category" class="nav-link px-2 text-dark fw-normal">All Category</a></li>
-      <li class="nav-item"><a href="/admin/all-post" class="nav-link px-2 text-dark fw-normal">All Post</a></li>
-      <% } %>
-      <li class="nav-item"><a href="/about" class="nav-link px-2 text-dark fw-normal">About</a></li>
-</ul>
+      <a href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <h4><i class="fa-solid fa-compass"></i> My Web Compass</h4>
+      </a>
+
+      <ul class="nav col-md-4 justify-content-end">
+            <% if(userIN){%>
+                  
+                  <% } %>
+                        <% if(!userIN){%>
+                              <li class="nav-item"><a href="/admin/login" class="btn btn-dark mx-1">Login</a>
+                              </li>
+                              <li class="nav-item"><a href="/register" class="btn btn-dark mx-1">Register</a>
+                              </li>
+                              <%}else{ %>
+                                    <% var userName = userName_g || null; %>
+                                    <li class="nav-item"><a href="/" class="btn btn-warning mx-1"><%= userName %></a>
+                                    </li>
+                                    <li class="nav-item"><a href="/admin/logout" class="btn btn-warning mx-1">Logout</a>
+                                    </li>
+
+                               <% } %>
+
+      </ul>
 </footer>

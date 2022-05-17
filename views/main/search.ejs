@@ -1,0 +1,53 @@
+
+<%- include('../partials/_header') -%>
+
+
+<body>
+      <div class="containers">
+            <!-- navigation -->
+            <%- include('../partials/_navigation') -%>
+
+            <div class="container mt-1">
+
+                  <div class="row justify-content-center">
+                       
+                        <div class="col-12 mb-5">
+                              <% for(var i = 0; i < post.length; i++) { %>
+                                    <div class="card mb-2">
+                                          <div class="card-body py-2 pt-2 pb-1">
+                                                <h5 class="card-title"><a href="/<%= post[i].categoryIn.slug %>/<%= post[i].slug %>" class="link-dark"><%- post[i].postTitle %></a></h5>
+                                                <p class="card-text d-inline fs-5"><%- post[i].postDescription.slice(0,150) %>     
+                                                </p><a href="/<%= post[i].categoryIn.slug %>/<%= post[i].slug %>" class="badge bg-dark">...Devamını oku</a>
+                                          </div>
+                                    </div>
+                              <% } %>
+
+
+                              <% if(pages >0) { %>
+                                    <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center">
+                                        <% for(i=1; i<=pages; i++){ %>
+                                            <% if (i== current){ %>
+                                                <li class="page-item disabled"><a href="/search?search=<%= query %>&page=<%= i %>" class="page-link"><%= i %></a></li>
+                                            <% } else if(i < pages) { %>
+                                                <li class="page-item"><a href="/search?search=<%= query %>&page=<%= i %>" class="page-link"><%= i %></a></li>
+                                            <% } else { %>
+                                                <li class="page-item"><a href="/search?search=<%= query %>&page=<%= i %>" class="page-link">Son</a></li>
+                                            <% } %>
+                                        <% } %>
+                                    </ul>
+                                    </nav>
+                              <% } %>
+                        </div>
+                  </div>
+
+
+
+            </div>
+            <!--- Content-->
+            <!---footer -->
+            <%- include('../partials/_footer') -%>
+      </div>
+</body>
+
+</html>

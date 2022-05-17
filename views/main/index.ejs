@@ -3,18 +3,18 @@
 
 
 <body>
-      <div class="containers">
+      <div class="containers w-100">
             <!-- navigation -->
             <%- include('../partials/_navigation') -%>
 
-            <div class="mt-10">
+            <div class="container mt-10">
 
                   <main class="px-3 text-center">
                         <h1><i class="fa-solid fa-compass"></i> My Web Compass</h1>
                         <p class="lead">Yazılım Dünyasındaki Pusulanız</p>
                         <div class="row justify-content-center">
-                              <form class="col-5 d-flex">
-                                    <input class="form-control me-2 form-control-lg" type="search" placeholder="Search"
+                              <form class="col-5 d-flex" method="GET" action="/search">
+                                    <input class="form-control me-2 form-control-lg" name="search" type="search" placeholder="Search"
                                           aria-label="Search">
                                     <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                               </form>
@@ -28,7 +28,20 @@
                                           15</span> </a>-->
                               
                               <% for(var i = 0; i < category.length; i++) { %>
-                                    <a href="/main-detail/<%= category[i]._id %>" type="button" class="btn btn-light text-break m-1 "><h1><%- category[i].icon %></h1><%- category[i].categoryName %></a>
+                                    <a href="/<%= category[i].slug %>" type="button" class="btn btn-light m-1 position-relative text-wrap w-10" style="width: 6rem; height:10rem;">
+                                          <h1><%- category[i].icon %></h1><%- category[i].categoryName %>
+                                          
+                                          <% for(var s =0; s < groupped.length ; s++ ){ %>
+                                                <% if(groupped[s].id == category[i].id ){ %> 
+                                                      <% if(groupped[s].rakam != ""){ %>
+                                                          <span class="position-absolute top-0 start-100  translate-middle badge rounded-pill bg-danger">
+                                                                <%=  groupped[s].rakam %>
+                                                            </span>
+                                                      <% } %>
+                                                <% } %>      
+                                          <% } %>      
+                                          
+                                    </a>
                               <% } %>
                               </div>
                               

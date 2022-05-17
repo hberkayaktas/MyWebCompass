@@ -7,7 +7,7 @@
             <!-- navigation -->
             <%- include('../partials/_navigation') -%>
 
-            <div class="container mt-5" style="height: 500px;">
+            <div class="container mt-0" style="height: 500px;">
 
                   <div class="row justify-content-center">
 
@@ -17,18 +17,17 @@
                                           Kayıtol
                                     </div>
                                     <div class="card-body">
-                                          <% var messsage = messsage || null;
-                                             if(messsage == "success"){ %>
-                                                <div class="alert alert-success" role="alert">
-                                                      kaydınız oluşturuldu
-                                                </div>
-                                          <% }else if(messsage =="fail"){   %>
-                                                <div class="alert alert-success" role="alert">
-                                                      kaydınız oluşturulamadı
-                                                </div>
-                                          <% }else{   %>
-                                                
-                                          <% } %>
+                                          <% if (flashMessages){%>
+                                                <% if (flashMessages.success){%>
+                                                    <div class="alert alert-success">
+                                                         <%= flashMessages.success %>
+                                                    </div>
+                                                <% }else if (flashMessages.error){%>
+                                                    <div class="alert alert-danger">
+                                                         <%- flashMessages.error %>
+                                                    </div>
+                                                <%}%>
+                                            <%}%>
                                           <form method="POST" action="/register">
                                                 <div class="mb-3">
                                                       <label for="exampleFormControlInput1" class="form-label"> Name </label>
@@ -44,7 +43,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                       <label for="exampleFormControlInput1" class="form-label"> Email </label>
-                                                      <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="password">
+                                                      <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="email">
                                                 </div>
                                                 <button type="submit" class="btn btn-success">Kayıt ol</button>
                                                 <a  href="/login" class="btn  btn-outline-primary">Giriş Yap</a>

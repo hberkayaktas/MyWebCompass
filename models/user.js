@@ -4,10 +4,30 @@ const Schema = mongoose.Schema;
 
 // Tablo oluşturma
 const userShema = new Schema({
-  name: String,
-  userName: String,
-  password: String,
-  email: String,
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  userName: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password:{
+    type:String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  role:{
+    type:String,
+    enum:["Admin","Moderator","User"],
+    default:"User"
+  },
   dateCreated: {
     type: Date,
     default: Date.now,

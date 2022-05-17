@@ -1,56 +1,85 @@
-
 html {
   scroll-behavior: smooth;
 }
+
 .containers {
-      margin: 0px;
-      width: 100%;
-      background-color: rgb(59, 59, 59);
-      background-image: url(../img/bg.jpg);
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: absolute;
+  margin: 0px;
+  width: 100%;
+  min-height: 100%;
+  background-color: rgb(59, 59, 59);
+  background-image: url(../img/bg.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
 }
 
 .mt-10 {
-      margin-top: 7%;
+  margin-top: 7%;
 }
-.banner-btn{
-      padding: 1.5rem;
-      margin-right: 0;
-      margin-left: 0;
-      border-width: 1px;
-      border-top-left-radius: 0.25rem;
-      border-top-right-radius: 0.25rem;
-      position: relative;
-      padding: 1rem;
-      margin: 1rem -0.75rem 0;
-      border: solid #dee2e6;
-      border-width: 1px 0 0;
+
+.banner-btn {
+  padding: 1.5rem;
+  margin-right: 0;
+  margin-left: 0;
+  border-width: 1px;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  position: relative;
+  padding: 1rem;
+  margin: 1rem -0.75rem 0;
+  border: solid #dee2e6;
+  border-width: 1px 0 0;
 }
 
 /* Scroll bar  */
 /* width */
 ::-webkit-scrollbar {
-      width: 10px;
-    }
-    
-    /* Track */
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1; 
-    }
-     
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: #888; 
-    }
-    
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555; 
-    }
+  width: 10px;
+}
 
-.logo-bigger{
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.logo-bigger {
   font-size: 120pt;
+}
+
+.footer {
+  width: 100%;
+  height: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 25px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  background: linear-gradient(0,#e3f2fd49,#ffffff7e);
+}
+
+code{
+  padding: 10px !important;
+    border-left: 4px solid #dc3545;
+    background-color: whitesmoke;
+
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    overflow: auto;
+    font-size: .875em;
 }

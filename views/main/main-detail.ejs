@@ -19,18 +19,40 @@
                               </div>
                         </div>
                        </div>
-                        <div class="col-9">
+                        <div class="col-9 mb-5">
+                              <% if(post.length>0){ %>
                               <% for(var i = 0; i < post.length; i++) { %>
                                     <div class="card mb-2">
                                           <div class="card-body py-2 pt-2 pb-1">
-                                                <h5 class="card-title"><a href="/post-detail/<%= post[i]._id %>" class="link-dark"><%- post[i].postTitle %></a></h5>
-                                                <p class="card-text d-inline fs-5"><%= post[i].postDescription.slice(0,150) %>     
-                                                </p><a href="/post-detail/<%= post[i]._id %>" class="badge bg-dark">...Devamını oku</a>
+                                                <h5 class="card-title"><a href="/<%= category.slug %>/<%= post[i].slug %>" class="link-dark"><%- post[i].postTitle %></a></h5>
+                                                <p class="card-text d-inline fs-5"><%- post[i].postDescription.slice(0,150) %>     
+                                                </p><a href="/<%= category.slug %>/<%= post[i].slug %>" class="badge bg-dark">...Devamını oku</a>
                                           </div>
                                     </div>
                               <% } %>
 
-
+                              <% if(pages >0) { %>
+                                    <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center">
+                                        <% for(i=1; i<=pages; i++){ %>
+                                            <% if (i== current){ %>
+                                                <li class="page-item disabled"><a href="/<%= category.slug %>?page=<%= i %>" class="page-link"><%= i %></a></li>
+                                            <% } else if(i < pages) { %>
+                                                <li class="page-item"><a href="/<%= category.slug %>?page=<%= i %>" class="page-link"><%= i %></a></li>
+                                            <% } else { %>
+                                                <li class="page-item"><a href="/<%= category.slug %>?page=<%= i %>" class="page-link">Son</a></li>
+                                            <% } %>
+                                        <% } %>
+                                    </ul>
+                                    </nav>
+                              <% } %>
+                              <% }else { %>
+                                    <div class="card mb-2">
+                                          <div class="card-body py-2 pt-2 pb-1">
+                                                <h5 class="card-title"><a href="" class="link-dark">Burada hiç Gönderi yok</a></h5>
+                                          </div>
+                                    </div>
+                              <% } %>    
                         </div>
                   </div>
 

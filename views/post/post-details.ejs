@@ -1,55 +1,92 @@
-
 <%- include('../partials/_header') -%>
 
 
-<body>
-      <div class="containers">
-            <!-- navigation -->
-            <%- include('../partials/_navigation') -%>
+      <body>
+            <div class="containers">
+                  <!-- navigation -->
+                  <%- include('../partials/_navigation') -%>
 
-            <div class="container mt-5">
+                        <div class="container mt-5 ">
 
-                  <div class="row justify-content-center">
-                        <div class="col-3">
-                              <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light rounded">
-                                          A list item
-                                          <span class="badge bg-danger rounded-pill"><%= postCount %></span>
-                                    </li>
-                                          <ul class="list-group my-0 ms-3 ">
-                                                <% for(var i = 0; i < allPost.length; i++) { %>
-                                                      <a href="/post-detail/<%= allPost[i]._id %>" class="text-decoration-none">
-                                                            <li class="list-group-item rounded"><%= allPost[i].postTitle %></li>
-                                                      </a>
-                                                <% } %>
+                              <div class="row justify-content-center mb-5">
+                                    <div class="col-3">
+                                          <ul class="list-group">
+                                                <li
+                                                      class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light rounded">
+                                                      <%= singlePost.categoryInTitle %>
+                                                            <span class="badge bg-danger rounded-pill">
+                                                                  <%= postCount %>
+                                                            </span>
+                                                </li>
+                                                <ul class="list-group my-0 ms-3 ">
+                                                      <% for(var i=0; i < allPost.length; i++) { %>
+                                                            <a href="/<%= categorySlug %>/<%= allPost[i].slug %>"
+                                                                  class="text-decoration-none">
+                                                                  <li class="list-group-item rounded">
+                                                                        <%= allPost[i].postTitle %>
+                                                                  </li>
+                                                            </a>
+                                                            <% } %>
+                                                </ul>
+
                                           </ul>
+                                    </div>
+                                    <div class="col-9 mb-5">
+                                          <div class="card" style="background: #ffffff98;">
+                                                <div class="card-body">
+                                                      <h5 class="card-title">
+                                                            <%= singlePost.postTitle %>
+                                                      </h5>
+                                                      <h6 class="card-subtitle mb-2 text-muted">
+                                                            <%= singlePost.dateCreated.toString().slice(0,21) %>
+                                                      </h6>
+                                                      <p class="card-text">
+                                                          
+                                                                  <%- singlePost.postDescription %>
+                                                                  <div class="row">
+                                                                        <div class="col"><div class="card">
+                                                                              <div class="card-body p-1">
+                                                                                    <h6 class="card-title">Oluşturan
+                                                                                    </h6>
+                                                                                    <%= singlePost.Cuser.name %>
+                                                                              </div></div>
+                                                                        </div> <% if(singlePost.Cuser.id == singlePost.Uuser.name){ %>
+                                                                        <div class="col"><div class="card">
+                                                                              <div class="card-body p-1">
+                                                                                    <h6 class="card-title">Güncelleyen
+                                                                                    </h6>
+                                                                                    <%= singlePost.Uuser.name %>
+                                                                              </div></div> 
+                                                                        </div><% } %>  
+                                                                  </div>
+                                                               
 
-                              </ul>
-                        </div>
-                        <div class="col-9">
-                              <div class="card" style="background: #ffffff98;">
-                                    <div class="card-body">
-                                          <h5 class="card-title"><%= singlePost.postTitle %></h5>
-                                          <h6 class="card-subtitle mb-2 text-muted"><%= singlePost.dateCreated.toString().slice(0,21) %></h6>
-                                          <p class="card-text">
-                                                <%- singlePost.postDescription %>
-                                                <a href="/update-post/<%= singlePost._id %>" class="btn btn-warning">Güncelle</a>
-                                                <a href="/delete-post/<%= singlePost._id %>" class="btn btn-danger">Sil</a>
-                                          </p>
+
+
+                                                                  
+                                                                  <br>
+                                                                  <% var userRoles=userRole || null;
+                                                                        if(userRoles=="Admin" ){ %>
+                                                                        <a href="/admin/update-post/<%= singlePost._id %>"
+                                                                              class="btn btn-warning">Güncelle</a>
+                                                                        <a href="/admin/delete-post/<%= singlePost._id %>"
+                                                                              class="btn btn-danger">Sil</a>
+                                                                        <% } %>
+                                                      </p>
+                                                </div>
+                                          </div>
+
+
                                     </div>
                               </div>
 
 
+
                         </div>
-                  </div>
-
-
-
+                        <!--- Content-->
+                        <!---footer -->
+                        <%- include('../partials/_footer') -%>
             </div>
-            <!--- Content-->
-            <!---footer -->
-            <%- include('../partials/_footer') -%>
-      </div>
-</body>
+      </body>
 
-</html>
+      </html>

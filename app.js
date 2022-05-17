@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore=require('connect-mongo');
+const flash = require('connect-flash');
 const ejs = require("ejs");
 const Category = require("./models/category");
 const Post = require("./models/post");
@@ -13,7 +14,8 @@ const adminRoutes = require("./routes/adminRoute");
 const app = express();
 
 //database bağlantısı
-connectStringB = "mongodb://localhost/mywebcompass-db";
+//connectStringB = "mongodb://localhost/mywebcompass-db";
+connectStringB = "mongodb+srv://hberkayaktas:MWXtPX5PHyA85WZ3@cluster0.ktfue.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(connectStringB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -24,6 +26,8 @@ app.set("view engine", "ejs");
 
 //Global Variable
 global.userIN = null;
+global.userRole = null;
+global.userName_g = null;
 
 //Middlewares
 app.use(express.static("public"));
@@ -39,15 +43,22 @@ app.use(
 );
 app.use("*", (req, res, next) => {
   userIN = req.session.userID;
+  userRole = req.session.userRole;
+  userName_g = req.session.userName_g;
   next();
 });
-
+app.use(flash());
+app.use((req, res, next) =>{
+  res.locals.flashMessages=req.flash();
+  next();
+})
+                           
 
 
 
 //routes
-app.use("/", pageRoute);
 app.use("/admin", adminRoutes);
+app.use("/", pageRoute);
 
 /*
 app.get("/all-category",)
